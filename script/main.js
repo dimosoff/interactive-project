@@ -35,19 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // end of video
-  videoElement.addEventListener("ended", () => {
-    if (step === maxStep) {
-      videoElement.classList.add(videoBlurClass);
-      finalScreen.classList.add(finalActiveClass);
-      leftButton.classList.add(btnHideClass);
-      rightButton.classList.add(btnHideClass);
-      audioElement.pause();
-      return;
-    }
-    videoElement.classList.add(videoBlurClass);
-    leftButton.classList.remove(btnHideClass);
-    rightButton.classList.remove(btnHideClass);
-  });
+  videoElement.addEventListener("ended", () => buttonsSwitch(), { once: true });
 
   // controls
   leftButton.addEventListener("click", () => playOption(0));
@@ -83,6 +71,20 @@ document.addEventListener("DOMContentLoaded", function () {
     mainSource.remove();
     videoElement.appendChild(sources[index]);
     videoElement.load();
+    videoElement.addEventListener("ended", () => buttonsSwitch(), { once: true });
     mainSource = sources[index];
+  }
+  function buttonsSwitch() {
+    if (step === maxStep) {
+      videoElement.classList.add(videoBlurClass);
+      finalScreen.classList.add(finalActiveClass);
+      leftButton.classList.add(btnHideClass);
+      rightButton.classList.add(btnHideClass);
+      audioElement.pause();
+      return;
+    }
+    videoElement.classList.add(videoBlurClass);
+    leftButton.classList.remove(btnHideClass);
+    rightButton.classList.remove(btnHideClass);
   }
 });
