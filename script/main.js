@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let mainSource = videoElement.querySelector("[type='video/mp4']"),
     videosUrlsArray = [],
     step = 0,
-    maxStep = 999;
+    maxStep = -1;
 
   // temp video elements
   let source1 = document.createElement("source"),
@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // end of video
   videoElement.addEventListener("ended", () => {
-    console.log(step, maxStep);
     if (step === maxStep) {
       videoElement.classList.add(videoBlurClass);
       finalScreen.classList.add(finalActiveClass);
@@ -74,14 +73,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
   function setStepFiles() {
-    if (!videosUrlsArray[step]) return step++;
+    if (!videosUrlsArray[step]) return ++step;
     sources[0].setAttribute("src", videosUrlsArray[step].left);
     sources[1].setAttribute("src", videosUrlsArray[step].right);
     step++;
-    if (maxStep === 999) maxStep = videosUrlsArray.length;
+    if (maxStep < 0) maxStep = videosUrlsArray.length;
   }
   function switchVideoSource(index) {
-    console.log(sources);
     mainSource.remove();
     videoElement.appendChild(sources[index]);
     videoElement.load();

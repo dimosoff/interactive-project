@@ -33,11 +33,13 @@ body {
   left: 50%;
   color: #fff;
   cursor: pointer;
-  border: 2px solid white;
+  border: 3px solid white;
   padding: 15px 30px;
   position: fixed;
   font-size: 24px;
   transform: translate(-50%, -50%);
+  font-weight: 700;
+  font-family: inherit;
   border-radius: 15px;
   text-transform: uppercase;
   background-color: rgba(0, 0, 0, 0.5);
@@ -56,6 +58,17 @@ body {
   }
   &._hidden {
     display: none;
+  }
+
+  @media (max-width: 575px) {
+    font-size: 20px;
+
+    &--left {
+      transform: translate(-105%, -50%);
+    }
+    &--right {
+      transform: translate(5%, -50%);
+    }
   }
 }
 .final {
