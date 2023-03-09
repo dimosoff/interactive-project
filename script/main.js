@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const app = {
-    build: false,
+    build: true,
     videoElement: document.querySelector(".video"),
     audioElement: document.querySelector(".audio"),
     interface: document.querySelector(".interface"),
@@ -46,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
       );
       document.addEventListener("visibilitychange", function () {
         if (document.hidden) {
+          if (["init", "loaded", "ended", "paused"].includes(_this.videoState))
+            return;
           _this.pauseVideo();
           _this.audioElement.pause();
         } else {
@@ -69,6 +71,13 @@ document.addEventListener("DOMContentLoaded", function () {
       this.videoElement.addEventListener("ended", () => this.videoEnded(), {
         once: true,
       });
+      this.videoElement.addEventListener("pause", () => {
+        this.log("global pause");
+        if (this.isAlmostEnds()) {
+          this.log("fires ended on pause when video almost ends");
+          this.videoEnded();
+        }
+      });
       this.getVideos();
     },
     playAudio: function () {
@@ -88,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.playVideo();
     },
     pauseVideo: function () {
+      if (this.isAlmostEnds()) return;
       this.videoElement.pause();
       this.videoState = "paused";
       this.log("video paused");
@@ -180,6 +190,17 @@ document.addEventListener("DOMContentLoaded", function () {
       } else if (html.mozRequestFullscreen) {
         html.mozRequestFullScreen();
       }
+    },
+    isAlmostEnds: function () {
+      this.log([
+        "time",
+        Math.floor(+this.videoElement.currentTime),
+        Math.floor(+this.videoElement.duration),
+      ]);
+      return (
+        Math.floor(+this.videoElement.currentTime) ===
+        Math.floor(+this.videoElement.duration)
+      );
     },
     log: function (data) {
       if (this.build) return;

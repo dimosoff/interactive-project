@@ -61,33 +61,6 @@ button {
   background-color: #fff;
 }
 
-@-webkit-keyframes wallpaper {
-  0% {
-    transform: translate(0, 0);
-  }
-  10% {
-    transform: translate(5px, -10px);
-  }
-  30% {
-    transform: translate(-5px, -5px);
-  }
-  40% {
-    transform: translate(0, -10px);
-  }
-  60% {
-    transform: translate(5px, 5px);
-  }
-  80% {
-    transform: translate(15px, 0);
-  }
-  90% {
-    transform: translate(5px, -5px);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
 @keyframes wallpaper {
   0% {
     transform: translate(0, 0);
@@ -114,20 +87,6 @@ button {
     transform: translate(0, 0);
   }
 }
-@-webkit-keyframes filling {
-  0% {
-    transform: translate(0, 0);
-  }
-  33% {
-    transform: translate(3px, -3px);
-  }
-  55% {
-    transform: translate(-1px, -6px);
-  }
-  80% {
-    transform: translate(-3px, 1px);
-  }
-}
 @keyframes filling {
   0% {
     transform: translate(0, 0);
@@ -140,14 +99,6 @@ button {
   }
   80% {
     transform: translate(-3px, 1px);
-  }
-}
-@-webkit-keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(60deg);
   }
 }
 @keyframes rotate {
@@ -287,8 +238,7 @@ body {
   content: "";
   opacity: 0.3;
   position: absolute;
-  -webkit-animation: filling 5s ease-out 0s infinite;
-          animation: filling 5s ease-out 0s infinite;
+  animation: filling 5s ease-out 0s infinite;
   background: url("../images/lines.svg") top left/100px repeat transparent;
 }
 .filling::after {
@@ -308,8 +258,7 @@ body {
   content: "";
   opacity: 0.4;
   position: absolute;
-  -webkit-animation: filling 5s ease-out 0.2s infinite;
-          animation: filling 5s ease-out 0.2s infinite;
+  animation: filling 5s ease-out 0.2s infinite;
   background: url("../images/circle.svg") top left/100px repeat transparent;
 }
 .filling__circles::after {
@@ -334,8 +283,7 @@ body {
 }
 .screensaver svg {
   position: absolute;
-  -webkit-animation: wallpaper 15s ease 0s infinite;
-          animation: wallpaper 15s ease 0s infinite;
+  animation: wallpaper 15s ease 0s infinite;
 }
 .screensaver svg:nth-child(1) {
   color: #00836f;
@@ -353,8 +301,7 @@ body {
   height: 60%;
   filter: blur(10px);
   opacity: 0.1;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  animation-delay: 1s;
 }
 .screensaver svg:nth-child(3) {
   top: 2%;
@@ -372,8 +319,7 @@ body {
   height: 15%;
   color: #00836f;
   opacity: 0.25;
-  -webkit-animation-delay: 1.5s;
-          animation-delay: 1.5s;
+  animation-delay: 1.5s;
 }
 
 .final {
@@ -409,8 +355,7 @@ body {
   width: 20rem;
   height: 20rem;
   color: #00836f;
-  -webkit-animation: wallpaper 15s ease -1s infinite;
-          animation: wallpaper 15s ease -1s infinite;
+  animation: wallpaper 15s ease -1s infinite;
 }
 .final__inner svg:last-child {
   top: 1.4rem;
@@ -418,8 +363,7 @@ body {
   width: 7rem;
   height: 7rem;
   color: #fff;
-  -webkit-animation: rotate 3s linear 0s infinite;
-          animation: rotate 3s linear 0s infinite;
+  animation: rotate 3s linear 0s infinite;
 }
 .final__text {
   position: relative;
