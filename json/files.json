@@ -1,10 +1,10 @@
 [
   {
-    "left": "video/final1.mp4",
-    "right": "video/final2.mp4"
+    "o1": "video/final1.mp4",
+    "o2": "video/final2.mp4"
   },
   {
-    "left": "video/final1.mp4",
-    "right": "video/final2.mp4"
+    "o1": "video/final1.mp4",
+    "o2": "video/final2.mp4"
   }
 ]

@@ -1,19 +1,23 @@
 @font-face {
-  font-family: "Lora";
+  font-family: "Montserrat";
   font-style: normal;
-  font-weight: 400;
-  src: local("☺"), url("../fonts/lora-v32-latin-regular.woff2") format("woff2"),
-    url("../fonts/lora-v32-latin-regular.woff") format("woff");
+  font-weight: 500;
+  src: url("../fonts/montserrat-v25-cyrillic_latin-500.woff2") format("woff2"),
+    url("../fonts/montserrat-v25-cyrillic_latin-500.woff") format("woff");
   font-display: swap;
 }
 @font-face {
-  font-family: "Lora";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
-  src: local("☺"), url("../fonts/lora-v32-latin-700.woff2") format("woff2"),
-    url("../fonts/lora-v32-latin-700.woff") format("woff");
+  src: url("../fonts/montserrat-v25-cyrillic_latin-700.woff2") format("woff2"),
+    url("../fonts/montserrat-v25-cyrillic_latin-700.woff") format("woff");
   font-display: swap;
 }
+
+$white: #fff;
+$green: #00836f;
+$green-hover: #265951;
 
 /* null styles */
 *,
@@ -44,4 +48,61 @@ img {
 svg {
   overflow: hidden;
   vertical-align: middle;
+}
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+*::selection {
+  color: $green;
+  background-color: $white;
+}
+
+@keyframes wallpaper {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(5px, -10px);
+  }
+  30% {
+    transform: translate(-5px, -5px);
+  }
+  40% {
+    transform: translate(0, -10px);
+  }
+  60% {
+    transform: translate(5px, 5px);
+  }
+  80% {
+    transform: translate(15px, 0);
+  }
+  90% {
+    transform: translate(5px, -5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes filling {
+  0% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(3px, -3px);
+  }
+  55% {
+    transform: translate(-1px, -6px);
+  }
+  80% {
+    transform: translate(-3px, 1px);
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(60deg);
+  }
 }
